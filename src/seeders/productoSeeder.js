@@ -1,27 +1,35 @@
-import Producto from '../models/Producto.js'
+import Producto from '../models/Producto.js';
 
-export const seedProductos = async () => {
+export default {
+  up: async () => {
+    const productos = [
+      {
+        nombre: 'Body de Algodón Oso',
+        descripcion: 'Body manga larga 100% algodón hipoalergénico para recién nacidos.',
+        imagen: 'https://ejemplo.com',
+        precio: 4500.00,
+        stock: 25,
+        categoria: 'bebe'
+      }
+    ];
 
-  await Producto.bulkCreate([
+    console.log('Verificando e insertando productos...');
 
-    {
-      nombre: 'Nike Air Max',
-      descripcion: 'Zapatilla deportiva',
-      imagen: 'nike.jpg',
-      precio: 250000,
-      stock: 10,
-      categoria: 'zapatilla'
-    },
-
-    {
-      nombre: 'Remera Adidas',
-      descripcion: 'Remera algodón',
-      imagen: 'adidas.jpg',
-      precio: 35000,
-      stock: 50,
-      categoria: 'remera'
+    for (const prod of productos) {
+      await Producto.findOrCreate({
+        where: { nombre: prod.nombre },
+        defaults: {
+          descripcion: prod.descripcion,
+          imagen: prod.imagen,
+          precio: prod.precio,
+          stock: prod.stock,
+          categoria: prod.categoria
+        }
+      });
     }
+  },
 
-  ])
-
-}
+  down: async () => {
+    await Producto.destroy({ where: {}, truncate: true });
+  }
+};
