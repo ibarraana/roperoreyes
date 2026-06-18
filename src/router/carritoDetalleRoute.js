@@ -5,35 +5,62 @@ export const CarritoDetalleRouteo = Router();
 
 CarritoDetalleRouteo.get('/', async (req, res) => {
     try {
-        res.json(await CarritoDetalle.findAll());
+        const carritos = await CarritoDetalle.findAll();
+        res.json(carritos);
+    } catch (e) { 
+        res.status(500).json({ error: e.message }); 
     }
-    catch (e) { res.status(500).json({ error: e.message }); }
 });
 
 CarritoDetalleRouteo.get('/:id', async (req, res) => {
     try { 
-        res.json(await CarritoDetalle.findByPk(req.params.id)); 
-    } 
-    catch (e) { res.status(500).json({ error: e.message }); }
+        const carrito = await CarritoDetalle.findByPk(req.params.id); 
+        if (!carrito) {
+            return res.status(404).json({ error: 'CarritoDetalle no encontrado' });
+        }
+        res.json(carrito); 
+    } catch (e) { 
+        res.status(500).json({ error: e.message }); 
+    }
 });
 
 CarritoDetalleRouteo.post('/', async (req, res) => {
     try { 
-        res.status(201).json(await CarritoDetalle.create(req.body)); 
-    } 
-    catch (e) { res.status(500).json({ error: e.message }); }
+        const nuevoCarrito = await CarritoDetalle.create(req.body);
+        res.status(201).json(nuevoCarrito); 
+    } catch (e) { 
+        res.status(400).json({ error: e.message }); // 400 para errores de validación
+    }
 });
 
 CarritoDetalleRouteo.put('/:id', async (req, res) => {
     try { 
-        await CarritoDetalle.update(req.body, { where: { id: req.params.id } });
-        res.json({ message: 'Actualizado' });
-    } catch (e) { res.status(500).json({ error: e.message }); }
+        const [filasActualizadas] = await CarritoDetalle.update(req.body, { 
+            where: { id_carrito_detalle: req.params.id } 
+        });
+        
+        if (filasActualizadas === 0) {
+            return res.status(404).json({ error: 'CarritoDetalle no encontrado para actualizar' });
+        }
+        
+        res.json({ message: 'Actualizado con éxito' });
+    } catch (e) { 
+        res.status(400).json({ error: e.message }); 
+    }
 });
 
 CarritoDetalleRouteo.delete('/:id', async (req, res) => {
     try { 
-        await CarritoDetalle.destroy({ where: { id: req.params.id } });
-        res.json({ message: 'Eliminado' });
-    } catch (e) { res.status(500).json({ error: e.message }); }
+        const filasEliminadas = await CarritoDetalle.destroy({ 
+            where: { id_carrito_detalle: req.params.id } 
+        });
+        
+        if (filasEliminadas === 0) {
+            return res.status(404).json({ error: 'CarritoDetalle no encontrado para eliminar' });
+        }
+        
+        res.json({ message: 'Eliminado con éxito' });
+    } catch (e) { 
+        res.status(500).json({ error: e.message }); 
+    }
 });

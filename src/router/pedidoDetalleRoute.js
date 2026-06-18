@@ -5,35 +5,62 @@ export const PedidoDetalleRouteo = Router();
 
 PedidoDetalleRouteo.get('/', async (req, res) => {
     try {
-        res.json(await PedidoDetalle.findAll());
+        const pedidos = await PedidoDetalle.findAll();
+        res.json(pedidos);
+    } catch (e) { 
+        res.status(500).json({ error: e.message }); 
     }
-    catch (e) { res.status(500).json({ error: e.message }); }
 });
 
 PedidoDetalleRouteo.get('/:id', async (req, res) => {
     try { 
-        res.json(await PedidoDetalle.findByPk(req.params.id)); 
-    } 
-    catch (e) { res.status(500).json({ error: e.message }); }
+        const pedido = await PedidoDetalle.findByPk(req.params.id); 
+        if (!pedido) {
+            return res.status(404).json({ error: 'PedidoDetalle no encontrado' });
+        }
+        res.json(pedido); 
+    } catch (e) { 
+        res.status(500).json({ error: e.message }); 
+    }
 });
 
 PedidoDetalleRouteo.post('/', async (req, res) => {
     try { 
-        res.status(201).json(await PedidoDetalle.create(req.body)); 
-    } 
-    catch (e) { res.status(500).json({ error: e.message }); }
+        const nuevoPedido = await PedidoDetalle.create(req.body);
+        res.status(201).json(nuevoPedido); 
+    } catch (e) { 
+        res.status(400).json({ error: e.message }); // 400 para errores de validación
+    }
 });
 
 PedidoDetalleRouteo.put('/:id', async (req, res) => {
     try { 
-        await PedidoDetalle.update(req.body, { where: { id: req.params.id } });
-        res.json({ message: 'Actualizado' });
-    } catch (e) { res.status(500).json({ error: e.message }); }
+        const [filasActualizadas] = await PedidoDetalle.update(req.body, { 
+            where: { id_pedido_detalle: req.params.id } 
+        });
+        
+        if (filasActualizadas === 0) {
+            return res.status(404).json({ error: 'PedidoDetalle no encontrado para actualizar' });
+        }
+        
+        res.json({ message: 'Actualizado con éxito' });
+    } catch (e) { 
+        res.status(400).json({ error: e.message }); 
+    }
 });
 
 PedidoDetalleRouteo.delete('/:id', async (req, res) => {
     try { 
-        await PedidoDetalle.destroy({ where: { id: req.params.id } });
-        res.json({ message: 'Eliminado' });
-    } catch (e) { res.status(500).json({ error: e.message }); }
+        const filasEliminadas = await PedidoDetalle.destroy({ 
+            where: { id_pedido_detalle: req.params.id } 
+        });
+        
+        if (filasEliminadas === 0) {
+            return res.status(404).json({ error: 'PedidoDetalle no encontrado para eliminar' });
+        }
+        
+        res.json({ message: 'Eliminado con éxito' });
+    } catch (e) { 
+        res.status(500).json({ error: e.message }); 
+    }
 });
