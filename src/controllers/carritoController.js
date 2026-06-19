@@ -1,104 +1,49 @@
-import Carrito from '../models/Carrito.js'
+import { Carrito } from '../models/index.js'
 
-export const getCarritos = async (req, res) => {
-  try {
-    const carritos = await Carrito.findAll()
-
-    res.status(200).json(carritos)
-
-  } catch (error) {
-
-    res.status(500).json({
-      mensaje: error.message
-    })
-
-  }
-}
-
-export const getCarritoById = async (req, res) => {
-  try {
-
-    const carrito = await Carrito.findByPk(req.params.id)
-
-    if (!carrito) {
-      return res.status(404).json({
-        mensaje: 'Carrito no encontrado'
-      })
+export const obtenerCarritos = async (req, res) => {
+    try { 
+      res.json(await Carrito.findAll()) 
+    } 
+    catch (e) { 
+      res.status(500).json({ error: e.message })
     }
-
-    res.json(carrito)
-
-  } catch (error) {
-
-    res.status(500).json({
-      mensaje: error.message
-    })
-
-  }
 }
 
-export const createCarrito = async (req, res) => {
-  try {
-
-    const carrito = await Carrito.create(req.body)
-
-    res.status(201).json(carrito)
-
-  } catch (error) {
-
-    res.status(500).json({
-      mensaje: error.message
-    })
-
-  }
-}
-
-export const updateCarrito = async (req, res) => {
-  try {
-
-    const carrito = await Carrito.findByPk(req.params.id)
-
-    if (!carrito) {
-      return res.status(404).json({
-        mensaje: 'Carrito no encontrado'
-      })
+export const obtenerCarritoPorId = async (req, res) => {
+    try { 
+        const producto = await Carrito.findByPk(req.params.id); 
+        if (!producto) return res.status(404).json({ error: 'Carrito no encontrado' });
+        res.json(producto); 
+    } catch (e) { 
+      res.status(500).json({ error: e.message })
     }
-
-    await carrito.update(req.body)
-
-    res.json(carrito)
-
-  } catch (error) {
-
-    res.status(500).json({
-      mensaje: error.message
-    })
-
-  }
 }
 
-export const deleteCarrito = async (req, res) => {
-  try {
-
-    const carrito = await Carrito.findByPk(req.params.id)
-
-    if (!carrito) {
-      return res.status(404).json({
-        mensaje: 'Carrito no encontrado'
-      })
+export const crearCarrito = async (req, res) => {
+    try { 
+      res.status(201).json(await Carrito.create(req.body)); 
+    } 
+    catch (e) { 
+      res.status(400).json({ error: e.message }); 
     }
+}
 
-    await carrito.destroy()
+export const actualizarCarrito = async (req, res) => {
+    try { 
+        const [filas] = await Carrito.update(req.body, { where: { id_carrito: req.params.id } })
+        if (filas === 0) return res.status(404).json({ error: 'Carrito no encontrado' })
+        res.json({ message: 'Actualizado' })
+    } catch (e) { 
+      res.status(400).json({ error: e.message }) 
+    }
+}
 
-    res.json({
-      mensaje: 'Carrito eliminado'
-    })
-
-  } catch (error) {
-
-    res.status(500).json({
-      mensaje: error.message
-    })
-
-  }
+export const eliminarCarrito = async (req, res) => {
+    try { 
+        const filas = await Carrito.destroy({ where: { id_carrito: req.params.id } })
+        if (filas === 0) return res.status(404).json({ error: 'Carrito no encontrado' })
+        res.json({ message: 'Eliminado' })
+    } catch (e) { 
+      res.status(500).json({ error: e.message })
+    }
 }

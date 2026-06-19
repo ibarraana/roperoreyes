@@ -1,4 +1,24 @@
 import { Router } from "express"
+
+import { 
+    obtenerProductos, 
+    obtenerProductoPorId, 
+    crearProducto, 
+    actualizarProducto, 
+    eliminarProducto 
+} from "../controllers/productoController.js" 
+
+export const ProductoRouteo = Router()
+
+ProductoRouteo.get('/', obtenerProductos)
+ProductoRouteo.get('/:id', obtenerProductoPorId)
+ProductoRouteo.post('/', crearProducto)
+ProductoRouteo.put('/:id', actualizarProducto)
+ProductoRouteo.delete('/:id', eliminarProducto)
+
+// Esto ya no es mas valido en el router porque esta en la capa controladora
+/*
+import { Router } from "express"
 import { Producto } from '../models/index.js'
 
 export const ProductoRouteo = Router();
@@ -64,3 +84,4 @@ ProductoRouteo.delete('/:id', async (req, res) => {
         res.status(500).json({ error: e.message }); 
     }
 });
+*/
