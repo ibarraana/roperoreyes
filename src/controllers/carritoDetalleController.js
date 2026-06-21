@@ -41,7 +41,7 @@ export const actualizarCarritoDetalle = async (req, res) => {
 export const eliminarCarritoDetalle = async (req, res) => {
     try { 
         const filas = await CarritoDetalle.destroy({ where: { id_detalle: req.params.id } })
-        if (filas === 0) return res.status(404).json({ error: 'Carrito no encontrado' })
+        if (filas === 0) return res.status(404).json({ error: 'Carrito Detalle no encontrado' })
         res.json({ message: 'Eliminado' })
     } catch (e) { 
       res.status(500).json({ error: e.message })

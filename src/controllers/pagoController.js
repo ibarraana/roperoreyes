@@ -12,7 +12,7 @@ export const obtenerPagos = async (req, res) => {
 export const obtenerPagoPorId = async (req, res) => {
     try { 
         const pago = await Pago.findByPk(req.params.id); 
-        if (!pago) return res.status(404).json({ error: 'Carrito no encontrado' });
+        if (!pago) return res.status(404).json({ error: 'Pago no encontrado' });
         res.json(pago); 
     } catch (e) { 
       res.status(500).json({ error: e.message })

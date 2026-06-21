@@ -1,4 +1,22 @@
 import { Router } from "express"
+
+import { 
+    obtenerPedidos, 
+    obtenerPedidosPorId, 
+    crearPedido, 
+    actualizarPedido, 
+    eliminarPedido 
+} from "../controllers/pedidoController.js" 
+
+export const PedidoRouteo = Router()
+
+PedidoRouteo.get('/', obtenerPedidos)
+PedidoRouteo.get('/:id', obtenerPedidosPorId)
+PedidoRouteo.post('/', crearPedido)
+PedidoRouteo.put('/:id', actualizarPedido)
+PedidoRouteo.delete('/:id', eliminarPedido)
+
+/*import { Router } from "express"
 import { Pedido } from '../models/index.js'
 
 export const PedidoRouteo = Router();
@@ -63,4 +81,4 @@ PedidoRouteo.delete('/:id', async (req, res) => {
     } catch (e) { 
         res.status(500).json({ error: e.message }); 
     }
-});
+});*/
