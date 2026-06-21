@@ -1,4 +1,22 @@
 import { Router } from "express"
+
+import { 
+    obtenerPagos, 
+    obtenerPagoPorId, 
+    crearPago, 
+    actualizarPago, 
+    eliminarPago 
+} from "../controllers/pagoController.js" 
+
+export const PagoRouteo = Router()
+
+PagoRouteo.get('/', obtenerPagos)
+PagoRouteo.get('/:id', obtenerPagoPorId)
+PagoRouteo.post('/', crearPago)
+PagoRouteo.put('/:id', actualizarPago)
+PagoRouteo.delete('/:id', eliminarPago)
+
+/*import { Router } from "express"
 import { Pago } from '../models/index.js'
 
 export const PagoRouteo = Router();
@@ -64,3 +82,4 @@ PagoRouteo.delete('/:id', async (req, res) => {
         res.status(500).json({ error: e.message }); 
     }
 });
+*/
