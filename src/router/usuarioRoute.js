@@ -1,4 +1,22 @@
 import { Router } from "express"
+
+import { 
+    obtenerUsuarios, 
+    obtenerUsuarioPorId, 
+    crearUsuario, 
+    actualizarUsuario, 
+    eliminarUsuario 
+} from "../controllers/usuarioController.js" 
+
+export const UsuarioRouteo = Router()
+
+UsuarioRouteo.get('/', obtenerUsuarios)
+UsuarioRouteo.get('/:id', obtenerUsuarioPorId)
+UsuarioRouteo.post('/', crearUsuario)
+UsuarioRouteo.put('/:id', actualizarUsuario)
+UsuarioRouteo.delete('/:id', eliminarUsuario)
+
+/*import { Router } from "express"
 import { Usuario } from '../models/index.js'
 
 export const UsuarioRouteo = Router();
@@ -64,3 +82,4 @@ UsuarioRouteo.delete('/:id', async (req, res) => {
         res.status(500).json({ error: e.message }); 
     }
 });
+*/
