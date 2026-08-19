@@ -1,10 +1,10 @@
-import CarritoDetalle from './CarritoDetalle.js'
-import Pago from './Pago.js'
-import Pedido from './Pedido.js'
-import PedidoDetalle from './PedidoDetalle.js'
-import Producto from './Producto.js'
-import Usuario from './Usuario.js'
-import Carrito from './Carrito.js'
+import CarritoDetalle from './carritoDetalle.model.js'
+import Pago from './pago.model.js'
+import Pedido from './pedido.model.js'
+import PedidoDetalle from './pedidoDetalle.model.js'
+import Producto from './producto.model.js'
+import Usuario from './usuario.model.js'
+import Carrito from './carrito.model.js'
 
 Carrito.belongsTo(Usuario, { foreignKey: 'id_usuario' })
 Usuario.hasMany(Carrito, { foreignKey: 'id_usuario' })

@@ -28,6 +28,8 @@ const Pago = sequelize.define('Pago', {
     type: DataTypes.DECIMAL(10, 2),
     allowNull: false
   }
+}, {
+  tableName: 'pagos'
 })
 
 export default Pago

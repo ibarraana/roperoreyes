@@ -17,7 +17,8 @@ const Carrito = sequelize.define('Carrito', {
     defaultValue: DataTypes.NOW,
     allowNull: false
   }
-
+}, {
+  tableName: 'carritos'
 })
 
 export default Carrito

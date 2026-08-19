@@ -43,6 +43,8 @@ const Producto = sequelize.define('Producto', {
     defaultValue: 'bebe'
   }
 
+}, {
+  tableName: 'productos'
 })
 
 export default Producto

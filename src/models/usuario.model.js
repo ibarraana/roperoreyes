@@ -45,6 +45,8 @@ const Usuario = sequelize.define('Usuario', {
     defaultValue: DataTypes.NOW,
     allowNull: false
   }
+}, {
+  tableName: 'usuarios'
 })
 
 export default Usuario

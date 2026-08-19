@@ -24,7 +24,8 @@ const CarritoDetalle = sequelize.define('CarritoDetalle', {
     type: DataTypes.STRING(20),
     allowNull: false
   }
-
+}, {
+  tableName: 'carrito_detalles'
 })
 
 export default CarritoDetalle

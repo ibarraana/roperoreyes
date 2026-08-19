@@ -36,6 +36,8 @@ const Pedido = sequelize.define('Pedido', {
     allowNull: false
   }
 
+}, {
+  tableName: 'pedidos'
 })
 
 export default Pedido
