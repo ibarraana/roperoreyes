@@ -3,26 +3,22 @@ import { sequelize } from '../config/database.js';
 
 const Pago = sequelize.define('Pago', {
 
-  id_pago: {
+  idPago: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true
   },
-  id_pedido: {
+  idPedido: {
     type: DataTypes.INTEGER,
     allowNull: false
   },
-  metodo_pago: {
-    type: DataTypes.STRING(50),
+  idMetodosPagos: {
+    type: DataTypes.INTEGER,
     allowNull: false
   },
-  estado_pago: {
-    type: DataTypes.ENUM(
-      'pendiente',
-      'aprobado',
-      'rechazado'
-    ),
-    defaultValue: 'pendiente'
+  idEstadoPago: {
+    type: DataTypes.INTEGER,
+    allowNull: false
   },
   monto: {
     type: DataTypes.DECIMAL(10, 2),

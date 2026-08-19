@@ -1,18 +1,18 @@
-import { DataTypes } from 'sequelize'
-import { sequelize } from '../config/database.js'
+import { DataTypes } from 'sequelize';
+import { sequelize } from '../config/database.js';
 
 const PedidoDetalle = sequelize.define('PedidoDetalle', {
 
-  id_detalle_pedido: {
+  idPedidoDetalle: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true
   },
-  id_pedido: {
+  idPedido: {
     type: DataTypes.INTEGER,
     allowNull: false
   },
-  id_producto: {
+  idProducto: {
     type: DataTypes.INTEGER,
     allowNull: false
   },
@@ -20,13 +20,24 @@ const PedidoDetalle = sequelize.define('PedidoDetalle', {
     type: DataTypes.INTEGER,
     allowNull: false
   },
-  precio_unitario: {
+  idTalle: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  },
+  idColor: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  },
+  precioUnitario: {
+    type: DataTypes.DECIMAL(10, 2),
+    allowNull: false
+  },
+  total: {
     type: DataTypes.DECIMAL(10, 2),
     allowNull: false
   }
-
 }, {
-  tableName: 'pedidos_detalles'
+  tableName: 'pedido_detalles'
 })
 
 export default PedidoDetalle

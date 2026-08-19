@@ -1,3 +1,3 @@
 # Proyecto Ana Gabriela Ibarra
 
-<img src="./recursos/modelo de bases de datos.png" alt="Modelo de bases de datos" />
+!["Modelo de bases de datos"](./recursos/modelo_de_base_datos.png)

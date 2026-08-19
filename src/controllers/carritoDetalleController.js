@@ -11,9 +11,9 @@ export const obtenerCarritosDetalles = async (req, res) => {
 
 export const obtenerCarritoDetallePorId = async (req, res) => {
     try { 
-        const producto = await CarritoDetalle.findByPk(req.params.id); 
-        if (!producto) return res.status(404).json({ error: 'Carrito Detalle no encontrado' });
-        res.json(producto); 
+        const carrito = await CarritoDetalle.findByPk(req.params.id); 
+        if (!carrito) return res.status(404).json({ error: 'Carrito Detalle no encontrado' });
+        res.json(carrito); 
     } catch (e) { 
       res.status(500).json({ error: e.message })
     }
@@ -30,7 +30,7 @@ export const crearCarritoDetalle = async (req, res) => {
 
 export const actualizarCarritoDetalle = async (req, res) => {
     try { 
-        const [filas] = await CarritoDetalle.update(req.body, { where: { id_detalle: req.params.id } })
+        const [filas] = await CarritoDetalle.update(req.body, { where: { id_carrito_detalle: req.params.id } })
         if (filas === 0) return res.status(404).json({ error: 'Carrito Detalle no encontrado' })
         res.json({ message: 'Actualizado' })
     } catch (e) { 
@@ -40,7 +40,7 @@ export const actualizarCarritoDetalle = async (req, res) => {
 
 export const eliminarCarritoDetalle = async (req, res) => {
     try { 
-        const filas = await CarritoDetalle.destroy({ where: { id_detalle: req.params.id } })
+        const filas = await CarritoDetalle.destroy({ where: { id_carrito_detalle: req.params.id } })
         if (filas === 0) return res.status(404).json({ error: 'Carrito Detalle no encontrado' })
         res.json({ message: 'Eliminado' })
     } catch (e) { 

@@ -1,8 +1,9 @@
-import { DataTypes } from 'sequelize'
-import { sequelize } from '../config/database.js'
+import { DataTypes } from 'sequelize';
+import { sequelize } from '../config/database.js';
 
 const Usuario = sequelize.define('Usuario', {
-  id_usuario: {
+
+  idUsuario: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true
@@ -11,24 +12,27 @@ const Usuario = sequelize.define('Usuario', {
     type: DataTypes.STRING(25),
     allowNull: false
   },
-  apellido: {
+  email: {
     type: DataTypes.STRING(25),
     allowNull: false
   },
-  email: {
-    type: DataTypes.STRING(25),
-    allowNull: false,
-    unique: true
-  },
   password: {
-    type: DataTypes.STRING(25),
+    type: DataTypes.STRING(100),
     allowNull: false
   },
   telefono: {
     type: DataTypes.STRING(25),
     allowNull: false
   },
-  direccion: {
+  calle: {
+    type: DataTypes.STRING(25),
+    allowNull: false
+  },
+  piso: {
+    type: DataTypes.STRING(25),
+    allowNull: false
+  },
+  departamento: {
     type: DataTypes.STRING(25),
     allowNull: false
   },
@@ -40,9 +44,8 @@ const Usuario = sequelize.define('Usuario', {
     type: DataTypes.STRING(25),
     allowNull: false
   },
-  fecha_registro: {
-    type: DataTypes.DATE,
-    defaultValue: DataTypes.NOW,
+  codigoPostal: {
+    type: DataTypes.STRING(25),
     allowNull: false
   }
 }, {

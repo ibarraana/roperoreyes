@@ -3,16 +3,16 @@ import { sequelize } from '../config/database.js';
 
 const CarritoDetalle = sequelize.define('CarritoDetalle', {
 
-  id_detalle: {
+  idCarritoDetalle: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true
   },
-  id_carrito: {
+  idCarrito: {
     type: DataTypes.INTEGER,
     allowNull: false
   },
-  id_producto: {
+  idProducto: {
     type: DataTypes.INTEGER,
     allowNull: false
   },
@@ -20,8 +20,12 @@ const CarritoDetalle = sequelize.define('CarritoDetalle', {
     type: DataTypes.INTEGER,
     allowNull: false
   },
-  talle: {
-    type: DataTypes.STRING(20),
+  idTalle: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  },
+  idColor: {
+    type: DataTypes.INTEGER,
     allowNull: false
   }
 }, {

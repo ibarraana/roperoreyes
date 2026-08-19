@@ -1,41 +1,33 @@
-import { DataTypes } from 'sequelize'
-import { sequelize } from '../config/database.js'
+import { DataTypes } from 'sequelize';
+import { sequelize } from '../config/database.js';
 
 const Pedido = sequelize.define('Pedido', {
 
-  id_pedido: {
+  idPedido: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true
   },
-  id_usuario: {
+  idUsuario: {
     type: DataTypes.INTEGER,
     allowNull: false
   },
   fecha: {
-    type: DataTypes.DATE,
-    defaultValue: DataTypes.NOW,
+    type: DataTypes.TIME,
     allowNull: false
   },
   total: {
     type: DataTypes.DECIMAL(10, 2),
-    defaultValue: 0,
     allowNull: false
   },
-  estado: {
-    type: DataTypes.ENUM(
-      'pendiente',
-      'pagado',
-      'enviado',
-      'entregado'
-    ),
-    defaultValue: 'pendiente'
+  idEstado: {
+    type: DataTypes.INTEGER,
+    allowNull: false
   },
-  direccion_envio: {
-    type: DataTypes.STRING(255),
+  direccionEnvio: {
+    type: DataTypes.STRING(50),
     allowNull: false
   }
-
 }, {
   tableName: 'pedidos'
 })
