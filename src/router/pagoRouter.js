@@ -8,10 +8,10 @@ import {
     eliminarPago 
 } from "../controllers/pagoController.js" 
 
-export const CarritoRouteo = Router()
+export const PagoRouteo = Router()
 
-CarritoRouteo.get('/', obtenerPago)
-CarritoRouteo.get('/:id', obtenerPagoPorId)
-CarritoRouteo.post('/', crearPago)
-CarritoRouteo.put('/:id', actualizarPago)
-CarritoRouteo.delete('/:id', eliminarPago)
+PagoRouteo.get('/', obtenerPago)
+PagoRouteo.get('/:id', obtenerPagoPorId)
+PagoRouteo.post('/', crearPago)
+PagoRouteo.put('/:id', actualizarPago)
+PagoRouteo.delete('/:id', eliminarPago)

@@ -8,10 +8,10 @@ import {
     eliminarColor 
 } from "../controllers/colorController.js" 
 
-export const CarritoRouteo = Router()
+export const ColorRouteo = Router()
 
-CarritoRouteo.get('/', obtenerColor)
-CarritoRouteo.get('/:id', obtenerColorPorId)
-CarritoRouteo.post('/', crearColor)
-CarritoRouteo.put('/:id', actualizarColor)
-CarritoRouteo.delete('/:id', eliminarColor)
+ColorRouteo.get('/', obtenerColor)
+ColorRouteo.get('/:id', obtenerColorPorId)
+ColorRouteo.post('/', crearColor)
+ColorRouteo.put('/:id', actualizarColor)
+ColorRouteo.delete('/:id', eliminarColor)

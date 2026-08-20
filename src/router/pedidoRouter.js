@@ -8,10 +8,10 @@ import {
     eliminarPedido 
 } from "../controllers/pedidoController.js" 
 
-export const CarritoRouteo = Router()
+export const PedidoRouteo = Router()
 
-CarritoRouteo.get('/', obtenerPedido)
-CarritoRouteo.get('/:id', obtenerPedidoPorId)
-CarritoRouteo.post('/', crearPedido)
-CarritoRouteo.put('/:id', actualizarPedido)
-CarritoRouteo.delete('/:id', eliminarPedido)
+PedidoRouteo.get('/', obtenerPedido)
+PedidoRouteo.get('/:id', obtenerPedidoPorId)
+PedidoRouteo.post('/', crearPedido)
+PedidoRouteo.put('/:id', actualizarPedido)
+PedidoRouteo.delete('/:id', eliminarPedido)

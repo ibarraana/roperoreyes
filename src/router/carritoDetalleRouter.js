@@ -8,10 +8,10 @@ import {
     eliminarCarritoDetalle 
 } from "../controllers/carritoDetalleController.js" 
 
-export const CarritoRouteo = Router()
+export const CarritoDetalleRouteo = Router()
 
-CarritoRouteo.get('/', obtenerCarritosDetalles)
-CarritoRouteo.get('/:id', obtenerCarritoDetallePorId)
-CarritoRouteo.post('/', crearCarritoDetalle)
-CarritoRouteo.put('/:id', actualizarCarritoDetalle)
-CarritoRouteo.delete('/:id', eliminarCarritoDetalle)
+CarritoDetalleRouteo.get('/', obtenerCarritosDetalles)
+CarritoDetalleRouteo.get('/:id', obtenerCarritoDetallePorId)
+CarritoDetalleRouteo.post('/', crearCarritoDetalle)
+CarritoDetalleRouteo.put('/:id', actualizarCarritoDetalle)
+CarritoDetalleRouteo.delete('/:id', eliminarCarritoDetalle)
