@@ -8,7 +8,7 @@ import ruteo from './router/index.js'
 const app = express()
 
 const allowedOrigins = [
-    '*',  // Vamos a dejar pasar todo, no es lo adecuado pero bueno    
+    // '*',  // Vamos a dejar pasar todo, no es lo adecuado pero bueno    
     'http://localhost:5173',
     'http://localhost:5174'
 ];
