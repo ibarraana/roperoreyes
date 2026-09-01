@@ -19,3 +19,13 @@ export async function getUsuarioById(id) {
     throw error
   } 
 }
+
+export async function crearUsuario(usuarioData) {
+  try {
+    const response = await api.post("/usuarios", usuarioData)
+    return response.data
+  } catch (error) {
+    console.error("Error al crear el usuario:", error)
+    throw error
+  }
+}
