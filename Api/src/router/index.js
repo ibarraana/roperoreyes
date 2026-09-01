@@ -10,6 +10,7 @@ import { PagoRouteo } from "./pagoRouter.js"
 import { PedidoDetalleRouteo } from "./pedidoDetalleRouter.js"
 import { PedidoRouteo } from "./pedidoRouter.js"
 import { ProductoRouteo } from "./productoRouter.js"
+import { UsuarioRouteo } from "./usuarioRouter.js"
 
 const ruteo = Router()
 
@@ -23,5 +24,6 @@ ruteo.use('/pagos', PagoRouteo)
 ruteo.use('/pedidos-detalles', PedidoDetalleRouteo)
 ruteo.use('/pedidos', PedidoRouteo)
 ruteo.use('/productos', ProductoRouteo)
+ruteo.use('/usuarios', UsuarioRouteo)
 
 export default ruteo
