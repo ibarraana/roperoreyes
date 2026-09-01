@@ -1,6 +1,6 @@
 
 
-function LoginComponent() {
+function LoginComponent({ cambiarVisualizacion }) {
     return (
         <div className="bg-white dark:bg-gray-800 rounded-lg px-6 py-8 ring shadow-xl ring-gray-900/5">
             
@@ -27,7 +27,9 @@ function LoginComponent() {
 
                 <p class="mt-4">
                     No tienes una cuenta?
-                    <a href="#" class="text-indigo-500">Crear cuenta</a>
+                    <a href="#" class="text-indigo-500" onClick={cambiarVisualizacion}>
+                        Crear cuenta
+                    </a>
                 </p>
 
                 <button type="submit" class="bg-indigo-500 hover:bg-indigo-600 transition-all text-white w-full py-2 rounded-md mt-4 cursor-pointer">

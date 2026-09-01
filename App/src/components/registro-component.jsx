@@ -1,5 +1,5 @@
 
-function RegistroComponent() {
+function RegistroComponent({ cambiarVisualizacion }) {
     return (
         <>
             <form class="bg-white rounded-lg shadow-xl text-sm text-gray-500 border border-gray-200 p-8 py-12 w-80 sm:w-[352px]">

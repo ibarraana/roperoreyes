@@ -1,3 +1,4 @@
+import { useState } from 'react'
 
 import LoginComponent from './components/login-component'
 import RegistroComponent from './components/registro-component'
@@ -7,6 +8,8 @@ import './App.css'
 import { getUsuarios, getUsuarioById } from './services/usuarios-services'
 
 function App() {
+
+  const [visualizacion, setVisualizacion] = useState("login")
   
 
 
@@ -16,11 +19,10 @@ function App() {
 
       <br />
 
-      <LoginComponent />
+      {/* Aplico el renderizado condicional */}
 
-      <br /><br />
-
-      <RegistroComponent />
+      {visualizacion == "login" && <LoginComponent cambiarVisualizacion= {() => setVisualizacion("registro")} />}
+      {visualizacion == "registro" && <RegistroComponent cambiarVisualizacion= {() => setVisualizacion("login")} />}
     </>
   )
 }
