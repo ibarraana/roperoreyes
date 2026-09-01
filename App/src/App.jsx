@@ -12,15 +12,13 @@ function App() {
 
   return (
     <>
-      <h1>Proyecto Ana Gabriela Ibarra</h1>
+      <h1 className="text-3xl font-semibold text-center mx-auto">Proyecto de Ana Gabriela Ibarra</h1>
 
       <br />
 
       <LoginComponent />
 
       <br /><br />
-      Si no cuenta con usuario, entonces debe registrarse en el siguiente formulario:
-      <br />
 
       <RegistroComponent />
     </>
