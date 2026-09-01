@@ -13,11 +13,11 @@ const Usuario = sequelize.define('Usuario', {
     allowNull: false
   },
   email: {
-    type: DataTypes.STRING(25),
+    type: DataTypes.STRING(100),
     allowNull: false
   },
   password: {
-    type: DataTypes.STRING(100),
+    type: DataTypes.STRING(25),
     allowNull: false
   },
   telefono: {
@@ -25,7 +25,7 @@ const Usuario = sequelize.define('Usuario', {
     allowNull: false
   },
   calle: {
-    type: DataTypes.STRING(25),
+    type: DataTypes.STRING(50),
     allowNull: false
   },
   piso: {
@@ -37,11 +37,11 @@ const Usuario = sequelize.define('Usuario', {
     allowNull: false
   },
   ciudad: {
-    type: DataTypes.STRING(25),
+    type: DataTypes.STRING(50),
     allowNull: false
   },
   provincia: {
-    type: DataTypes.STRING(25),
+    type: DataTypes.STRING(50),
     allowNull: false
   },
   codigoPostal: {

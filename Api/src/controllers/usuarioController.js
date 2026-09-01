@@ -19,6 +19,23 @@ export const obtenerUsuarioPorId = async (req, res) => {
     }
 }
 
+export const loginUsuario = async (req, res) => {
+    try {
+      const email = req.body.email
+      const password = req.body.password
+
+      const usuario = await Usuario.findOne({ where: { email, password } });
+
+      if (!usuario) return res.status(401).json({ error: 'Credenciales incorrectas' });
+
+      res.json({ message: 'Login exitoso', usuario });
+    }
+    catch(e) {
+        res.status(500).json({ error: e.message })
+    }
+
+}
+
 export const crearUsuario = async (req, res) => {
     try { 
       res.status(201).json(await Usuario.create(req.body)); 

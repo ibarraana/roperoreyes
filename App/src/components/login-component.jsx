@@ -1,6 +1,39 @@
+import { useState } from "react"
+import { loginUsuario } from "../services/usuarios-services"
 
+function LoginComponent({ cambiarVisualizacion, logueoCambioVisualizacion }) {
 
-function LoginComponent({ cambiarVisualizacion }) {
+    const [ datosLogin, setDatosLogin ] = useState(
+        {
+            email: "",
+            password: ""
+        }
+    )
+
+    function enviarInformacion(event) {
+        let nombreCampos = event.target.name
+        let valorCampos = event.target.value
+
+        let nuevoEstado = Object.assign({}, datosLogin)
+        nuevoEstado[nombreCampos] = valorCampos
+        setDatosLogin(nuevoEstado)
+    }
+
+    function manejarEnvio(event) {
+        event.preventDefault()
+
+        loginUsuario(datosLogin)
+            .then((response) => {
+                console.log("Usuario logueado correctamente:", response)
+                logueoCambioVisualizacion()
+            }
+            )
+            .catch((error) => {
+                console.error("Error al loguear el usuario:", error)
+            }
+            )
+    }
+
     return (
         <div className="bg-white dark:bg-gray-800 rounded-lg px-6 py-8 ring shadow-xl ring-gray-900/5">
             
@@ -8,20 +41,22 @@ function LoginComponent({ cambiarVisualizacion }) {
 
             {/* De esta pagina hemos sacado el login: https://prebuiltui.com/components/login-form */}
 
-            <form class="bg-white rounded-lg shadow-xl text-sm text-gray-500 border border-gray-200 p-8 py-12 w-80 sm:w-[352px]">
+            <form onSubmit={manejarEnvio} class="bg-white rounded-lg shadow-xl text-sm text-gray-500 border border-gray-200 p-8 py-12 w-80 sm:w-[352px]">
                 <p class="text-2xl font-medium text-center">
                     <span class="text-indigo-500">Usuario</span> Login
                 </p>
 
                 <div class="mt-4">
                     <label class="block">Ingrese el email:</label>
-                    <input type="email" placeholder="Escribir el email aqui..." required
+                    <input type="email" value={datosLogin.email} onChange={enviarInformacion} name="email"
+                         placeholder="Escribir el email aqui..." required
                         class="border border-gray-200 rounded w-full p-2 mt-1 outline-indigo-500" />
                 </div>
 
                 <div class="mt-4">
                     <label class="block">Ingrese la contraseña:</label>
-                    <input type="password" placeholder="Escribir la contraseña aqui..." required
+                    <input type="password" value={datosLogin.password} onChange={enviarInformacion} name="password"
+                         placeholder="Escribir la contraseña aqui..." required
                         class="border border-gray-200 rounded w-full p-2 mt-1 outline-indigo-500" />
                 </div>
 

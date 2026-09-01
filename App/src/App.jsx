@@ -2,10 +2,10 @@ import { useState } from 'react'
 
 import LoginComponent from './components/login-component'
 import RegistroComponent from './components/registro-component'
+import PaginaComponent from './components/pagina-component'
 
 import './App.css'
 
-import { getUsuarios, getUsuarioById } from './services/usuarios-services'
 
 function App() {
 
@@ -21,8 +21,15 @@ function App() {
 
       {/* Aplico el renderizado condicional */}
 
-      {visualizacion == "login" && <LoginComponent cambiarVisualizacion= {() => setVisualizacion("registro")} />}
-      {visualizacion == "registro" && <RegistroComponent cambiarVisualizacion= {() => setVisualizacion("login")} />}
+      {visualizacion == "login" && 
+        <LoginComponent cambiarVisualizacion= {() => setVisualizacion("registro")} 
+        logueoCambioVisualizacion={() => setVisualizacion("pagina")} />}
+      
+      {visualizacion == "registro" && 
+        <RegistroComponent cambiarVisualizacion= {() => setVisualizacion("login")} />}
+
+      {visualizacion == "pagina" && 
+        <PaginaComponent cambiarVisualizacion= {() => setVisualizacion("login")} />}
     </>
   )
 }

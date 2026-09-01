@@ -5,7 +5,8 @@ import {
     obtenerUsuarioPorId, 
     crearUsuario, 
     actualizarUsuario, 
-    eliminarUsuario 
+    eliminarUsuario,
+    loginUsuario
 } from "../controllers/usuarioController.js" 
 
 export const UsuarioRouteo = Router()
@@ -15,3 +16,4 @@ UsuarioRouteo.get('/:id', obtenerUsuarioPorId)
 UsuarioRouteo.post('/', crearUsuario)
 UsuarioRouteo.put('/:id', actualizarUsuario)
 UsuarioRouteo.delete('/:id', eliminarUsuario)
+UsuarioRouteo.post('/login', loginUsuario)
