@@ -39,12 +39,6 @@ Carrito.hasMany(CarritoDetalle, { foreignKey: "idCarrito" })
 CarritoDetalle.belongsTo(Producto, { foreignKey: "idProducto" })
 Producto.hasMany(CarritoDetalle, { foreignKey: "idProducto" })
 
-CarritoDetalle.belongsTo(Talle, { foreignKey: "idTalle" })
-Talle.hasMany(CarritoDetalle, { foreignKey: "idTalle" })
-
-CarritoDetalle.belongsTo(Color, { foreignKey: "idColor" })
-Color.hasMany(CarritoDetalle, { foreignKey: "idColor" })
-
 Pedido.belongsTo(Usuario, { foreignKey: "idUsuario" })
 Usuario.hasMany(Pedido, { foreignKey: "idUsuario" })
 

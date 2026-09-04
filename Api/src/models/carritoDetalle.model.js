@@ -19,14 +19,6 @@ const CarritoDetalle = sequelize.define('CarritoDetalle', {
   cantidad: {
     type: DataTypes.INTEGER,
     allowNull: false
-  },
-  idTalle: {
-    type: DataTypes.INTEGER,
-    allowNull: false
-  },
-  idColor: {
-    type: DataTypes.INTEGER,
-    allowNull: false
   }
 }, {
   tableName: 'carrito_detalles'
