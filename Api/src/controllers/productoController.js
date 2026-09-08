@@ -21,7 +21,15 @@ export const obtenerProductoPorId = async (req, res) => {
 
 export const crearProducto = async (req, res) => {
     try { 
-      res.status(201).json(await Producto.create(req.body)); 
+      if(req.body.nombre != null || req.body.nombre != ""
+        && req.body.precio != null || req.body.precio != 0
+        && req.body.stock != null || req.body.stock != 0
+        && req.body.imagen != null || req.body.imagen != ""
+      ) {
+        res.status(201).json(await Producto.create(req.body)); 
+      } else {
+        res.status(400).json({ error: 'Faltan datos' });
+      }  
     } 
     catch (e) { 
       res.status(400).json({ error: e.message }); 
