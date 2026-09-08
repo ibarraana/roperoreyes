@@ -21,15 +21,26 @@ export const obtenerProductoPorId = async (req, res) => {
 
 export const crearProducto = async (req, res) => {
     try { 
-      if(req.body.nombre != null || req.body.nombre != ""
-        && req.body.precio != null || req.body.precio != 0
-        && req.body.stock != null || req.body.stock != 0
-        && req.body.imagen != null || req.body.imagen != ""
+
+      if (!req.body) {
+        return res.status(400).json({ error: 'No se recibieron datos' });
+      }
+
+      const nombre = req.body.nombre;
+      const precio = req.body.precio;
+      const stock = req.body.stock;
+      const imagen = req.body.imagen;
+
+      if (nombre != null && nombre.toString() != "" &&
+          precio != null && precio != "0" &&
+          stock != null && stock != "0" &&
+          imagen != null && imagen.toString() != ""
       ) {
-        res.status(201).json(await Producto.create(req.body)); 
+        const nuevoProducto = await Producto.create(req.body);
+        return res.status(201).json(nuevoProducto); 
       } else {
-        res.status(400).json({ error: 'Faltan datos' });
-      }  
+        return res.status(400).json({ error: 'Faltan datos obligatorios' });
+      }
     } 
     catch (e) { 
       res.status(400).json({ error: e.message }); 
