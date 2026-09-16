@@ -8,7 +8,7 @@ function RegistroComponent({ cambiarVisualizacion }) {
         {
             nombre: "",
             email: "",
-            password: "",
+            passwordUsuario: "",
             telefono: "",
             calle: "",
             piso: "",
@@ -71,7 +71,7 @@ function RegistroComponent({ cambiarVisualizacion }) {
 
                 <div class="mt-4">
                     <label class="block">Ingrese la Password:</label>
-                    <input type="password" value={usuarioData.password} onChange={enviarInformacion} name="password"
+                    <input type="password" value={usuarioData.passwordUsuario} onChange={enviarInformacion} name="passwordUsuario"
                         placeholder="Escribir la contraseña aqui..." required
                         class="border border-gray-200 rounded w-full p-2 mt-1 outline-indigo-500" />
                 </div>

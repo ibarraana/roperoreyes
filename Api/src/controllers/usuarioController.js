@@ -24,7 +24,7 @@ export const loginUsuario = async (req, res) => {
       const email = req.body.email
       const password = req.body.password
 
-      const usuario = await Usuario.findOne({ where: { email, password } });
+      const usuario = await Usuario.findOne({ where: { email: email, passwordUsuario: password } });
 
       if (!usuario) return res.status(401).json({ error: 'Credenciales incorrectas' });
 
@@ -47,7 +47,7 @@ export const crearUsuario = async (req, res) => {
 
 export const actualizarUsuario = async (req, res) => {
     try { 
-        const [filas] = await Usuario.update(req.body, { where: { id_usuario: req.params.id } })
+        const [filas] = await Usuario.update(req.body, { where: { idUsuario: req.params.id } })
         if (filas === 0) return res.status(404).json({ error: 'Usuario no encontrado' })
         res.json({ message: 'Actualizado' })
     } catch (e) { 
@@ -57,7 +57,7 @@ export const actualizarUsuario = async (req, res) => {
 
 export const eliminarUsuario = async (req, res) => {
     try { 
-        const filas = await Usuario.destroy({ where: { id_usuario: req.params.id } })
+        const filas = await Usuario.destroy({ where: { idUsuario: req.params.id } })
         if (filas === 0) return res.status(404).json({ error: 'Usuario no encontrado' })
         res.json({ message: 'Eliminado' })
     } catch (e) { 

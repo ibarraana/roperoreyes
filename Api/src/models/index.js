@@ -69,7 +69,7 @@ Talle.hasMany(Producto, { foreignKey: "idTalle" })
 Producto.belongsTo(Color, { foreignKey: "idColor" })
 Color.hasMany(Producto, { foreignKey: "idColor" })
 
-export{
+export {
     Carrito, 
     CarritoDetalle, 
     Categoria, 
@@ -83,4 +83,4 @@ export{
     Producto,
     Talle,
     Usuario
-}
+};
