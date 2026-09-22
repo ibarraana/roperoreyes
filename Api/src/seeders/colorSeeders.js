@@ -7,7 +7,7 @@ export default {
     await Color.findOrCreate({ where: { nombre: 'Blanco' } });
     await Color.findOrCreate({ where: { nombre: 'Celeste' } });
     await Color.findOrCreate({ where: { nombre: 'Rosa' } });
-    await Color.findOrCreate({ where: { nombre: 'Gris Melange' } });
+    await Color.findOrCreate({ where: { nombre: 'Gris' } });
   },
 
   down: async () => {

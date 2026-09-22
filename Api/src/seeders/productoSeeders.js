@@ -10,7 +10,7 @@ export default {
     const categoriaBebe = await Categoria.findOne({ where: { nombre: 'Bebés' } });
     const categoriaNinos = await Categoria.findOne({ where: { nombre: 'Niños' } });
 
-    const talleRN = await Talle.findOne({ where: { nombre: 'RN (Recién Nacido)' } });
+    const talleRN = await Talle.findOne({ where: { nombre: 'Bebe menos 1 mes' } });
     const talle3M = await Talle.findOne({ where: { nombre: '3 Meses' } });
     const talleT2 = await Talle.findOne({ where: { nombre: 'Talle 2' } });
 
