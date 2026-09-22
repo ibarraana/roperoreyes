@@ -11,6 +11,10 @@ import PedidoDetalle from './pedidoDetalle.model.js'
 import Producto from './producto.model.js'
 import Talle from './talle.model.js'
 import Usuario from './usuario.model.js'
+import Rol from './rol.model.js'
+
+Usuario.belongsTo(Rol, { foreignKey: "idRol" })
+Rol.hasMany(Usuario, { foreignKey: "idRol" })
 
 Pago.belongsTo(MetodoPago, { foreignKey: "idMetodosPagos" })
 MetodoPago.hasMany(Pago, { foreignKey: "idMetodosPagos" })
@@ -82,5 +86,6 @@ export {
     PedidoDetalle,
     Producto,
     Talle,
-    Usuario
+    Usuario,
+    Rol
 };

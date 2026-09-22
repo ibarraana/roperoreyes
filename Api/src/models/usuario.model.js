@@ -47,6 +47,10 @@ const Usuario = sequelize.define('Usuario', {
   codigoPostal: {
     type: DataTypes.STRING(25),
     allowNull: false
+  },
+  idRol: {
+    type: DataTypes.INTEGER,
+    allowNull: false
   }
 }, {
   tableName: 'usuarios'

@@ -1,5 +1,9 @@
 import { sequelize, testConnection } from '../config/database.js';
-import productosSeeder from './productosSeeder.js'; 
+import rolUsuarioSeeder from './rolUsuarioSeeder.js';
+import colorSeeder from './colorSeeders.js';
+import categoriaSeeder from './categoriaSeeders.js';
+import talleSeeder from './talleSeeders.js';
+import productoSeeder from './productoSeeders.js';
 
 const runSeeds = async () => {
   try {
@@ -9,7 +13,11 @@ const runSeeds = async () => {
     
     await sequelize.sync({ force: false }); 
     
-    await productosSeeder.up();  
+    await rolUsuarioSeeder.up();  
+    await colorSeeder.up();
+    await categoriaSeeder.up();
+    await talleSeeder.up();
+    await productoSeeder.up();
 
     console.log('✅ Todos los seeders se ejecutaron con éxito.');
     process.exit(0);
